@@ -14,7 +14,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'acpi-ease-backlight = acpibacklight.cli:backlight'      
+            'acpi-ease-backlight = acpibacklight.cli:backlight_cli'      
         ],
     },
 
