@@ -110,6 +110,16 @@ def main():
         '--easing-function',
         '-e',
         default='easeOutCubic',
+        choices=['easeInBack', 'easeInBounce', 'easeInCirc', 'easeInCubic',
+            'easeInElastic', 'easeInExpo', 'easeInOutBack', 'easeInOutBounce',
+            'easeInOutCirc', 'easeInOutCubic', 'easeInOutElastic',
+            'easeInOutExpo', 'easeInOutQuad', 'easeInOutQuart',
+            'easeInOutQuint', 'easeInOutSine', 'easeInQuad', 'easeInQuart',
+            'easeInQuint', 'easeInSine', 'easeOutBack', 'easeOutBounce',
+            'easeOutCirc', 'easeOutCubic', 'easeOutElastic', 'easeOutExpo',
+            'easeOutQuad', 'easeOutQuart', 'easeOutQuint', 'easeOutSine',
+            'linear'],
+        metavar='EASING_FUNC',
         help='The easing function used for animations. This program uses '
              'PyTweening so use the function names from PyTweening e.g. '
              '"easeOutCubic" or "easeInOutQuad".'
