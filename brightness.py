@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
 import os
 from datetime import datetime, timedelta
 import time
 import pytweening
+import argparse
 
 def timed_range(start, stop, duration, easing_func=lambda t: t):
     """Generator function for a timed range on an easing function
@@ -82,10 +82,41 @@ class AcpiBrightnessControl(object):
 
 
 def main():
-    end_brightness = int(sys.argv[1])
+    parser = argparse.ArgumentParser(description='Change and animate backlight brightness via acpi')
+    parser.add_argument(
+        'action',
+        default='show',
+        choices=['show', 'set', 'inc', 'dec'],
+        metavar='action',
+        help='The action that executes. One of "show", "set", '
+             '"inc", or "dec"'
+    )
+    parser.add_argument(
+        'operand',
+        nargs='?',
+        type=int,
+        help='The operand the action executes on.'
+    )
+    parser.add_argument(
+        '--duration',
+        '-d',
+        type=int,
+        default=0.25,
+        help='The duration for the action to take effect over. Only taken '
+             'into account on set, inc, and dec operations'
+    )
+    args = parser.parse_args()
 
     with AcpiBrightnessControl() as control:
-        control.animate(int(sys.argv[1]))
+
+        if args.action == 'show':
+            print(control.brightness)
+        elif args.action == 'set':
+            control.animate(args.operand, args.duration)
+        elif args.action == 'inc':
+            control.animate(control.brightness + args.operand)
+        elif args.action == 'dec':
+            control.animate(control.brightness - args.operand)
 
 if __name__ == "__main__":
     main()
