@@ -24,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     '--duration',
     '-d',
-    type=int,
+    type=float,
     default=0.25,
     help='The duration for the action to take effect over. Only taken '
          'into account on set, inc, and dec operations.'
