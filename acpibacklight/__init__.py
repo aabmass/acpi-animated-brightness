@@ -1,1 +1,1 @@
-from .acpibacklight import AcpiBrightnessControl
+from .acpibacklight import AcpiBacklightControl

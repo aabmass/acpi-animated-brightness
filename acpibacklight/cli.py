@@ -4,7 +4,7 @@
 import sys
 import argparse
 import pytweening
-from .acpibacklight import AcpiBrightnessControl
+from .acpibacklight import AcpiBacklightControl
 
 parser = argparse.ArgumentParser(description='Change and animate backlight brightness via acpi')
 parser.add_argument(
@@ -49,7 +49,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-with AcpiBrightnessControl() as control:
+with AcpiBacklightControl() as control:
 
     if args.action == 'show':
         print(control.brightness)
@@ -78,7 +78,7 @@ with AcpiBrightnessControl() as control:
                   'Defaulting to easeOutCubic.'.format(args.easing_function))
 
         new_brightness = control.brightness
-        if args.action == 'set': 
+        if args.action == 'set':
             new_brightness = args.operand
         elif args.action == 'inc':
             new_brightness += args.operand

@@ -21,7 +21,7 @@ def timed_range(start, stop, duration, easing_func=lambda t: t):
         t_scaled = 1 - (duration - t) / duration
         yield i
 
-class AcpiBrightnessControl(object):
+class AcpiBacklightControl(object):
     default_dir = '/sys/class/backlight/intel_backlight'
 
 
