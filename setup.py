@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name='acpibacklight',
-    version='0.1.1',
+    version='0.1.2',
     packages=find_packages(),
     scripts=[],
     install_requires=['PyTweening==1.0.3'],
