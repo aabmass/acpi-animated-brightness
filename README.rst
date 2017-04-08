@@ -1,7 +1,8 @@
 acpibacklight
 =============
 
-|PyPI version|
+`PyPI acpibacklight <https://pypi.python.org/pypi/acpibacklight/0.1.1>`__
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A python library and script for changing brightness on Linux via acpi.
 Allows for easing animations too!
@@ -96,6 +97,3 @@ between 0 and 1. For instance, a linear easing function would look like:
 
     # ...
     ctrl.animate(1234, easing_func=linear_easing)
-
-.. |PyPI version| image:: https://badge.fury.io/py/acpibacklight.svg
-   :target: https://badge.fury.io/py/acpibacklight
