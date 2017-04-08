@@ -23,8 +23,8 @@ def timed_range(start, stop, duration, easing_func=lambda t: t):
 
 class AcpiBrightnessControl(object):
     default_dir = '/sys/class/backlight/intel_backlight'
-    
-    
+
+
     def __init__(self, dir=None, time_sleep=0.01):
         """__init__
 
@@ -72,9 +72,11 @@ class AcpiBrightnessControl(object):
         new_brightness = str(int(new_brightness))
         self.brightness_file.write(new_brightness)
 
+        # not sure if I need to flush the file or not...
+
     def animate(self, new_brightness, duration=0.25, easing_func=pytweening.easeOutCubic):
         """Adjusts backlight brightness to new_brightness with an animation
-        
+
         Default animation is easeOutCubic over 0.25s duration
         """
         anim_range = timed_range(self.brightness, new_brightness, duration, easing_func)
