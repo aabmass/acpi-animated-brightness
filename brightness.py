@@ -29,8 +29,14 @@ class AcpiBrightnessControl(object):
     default_dir = '/sys/class/backlight/intel_backlight'
     
     
-    def __init__(self, dir=None):
+    def __init__(self, dir=None, time_sleep=0.01):
+        """__init__
+
+        :param dir: The directory containing the acpi files
+        :param time_sleep: The time to time.wait() to prevent busy waiting
+        """
         self.dir = dir or self.default_dir
+        self.time_sleep = time_sleep
 
     def __enter__(self):
         self.open()
@@ -79,7 +85,7 @@ class AcpiBrightnessControl(object):
         for i in anim_range:
             self.brightness = i
             # avoid busy waiting on time in the generator
-            time.sleep(0.001)
+            time.sleep(self.time_sleep)
 
 
 def main():
