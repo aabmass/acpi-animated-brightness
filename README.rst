@@ -53,6 +53,8 @@ use python *with* statements similarly to file objects and python's
 
 .. code:: python
 
+    from acpibacklight import AcpiBacklightControl
+
     with AcpiBacklightControl() as ctrl:
         # set the brightness without animating
         ctrl.brightness = 2000

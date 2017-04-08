@@ -48,6 +48,8 @@ Use the class `acpibacklight.AcpiBacklightControl` for changing the backlight
 level in various ways. `AcpiBacklightControl` is designed to use python *with*
 statements similarly to file objects and python's `open` builtin:
 ```python
+from acpibacklight import AcpiBacklightControl
+
 with AcpiBacklightControl() as ctrl:
     # set the brightness without animating
     ctrl.brightness = 2000
