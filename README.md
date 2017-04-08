@@ -1,7 +1,8 @@
 acpibacklight
 ========
 
-### [PyPI acpibacklight](https://pypi.python.org/pypi/acpibacklight)
+[![PyPI version](https://badge.fury.io/py/acpibacklight.svg)](https://badge.fury.io/py/acpibacklight)
+
 A python library and script for changing brightness on Linux via acpi. Allows
 for easing animations too!
 
