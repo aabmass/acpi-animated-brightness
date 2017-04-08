@@ -4,7 +4,7 @@
 import sys
 import argparse
 import pytweening
-from acpibacklight import AcpiBrightnessControl
+from .acpibacklight import AcpiBrightnessControl
 
 parser = argparse.ArgumentParser(description='Change and animate backlight brightness via acpi')
 parser.add_argument(
