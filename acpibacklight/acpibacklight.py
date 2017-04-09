@@ -21,17 +21,36 @@ def timed_range(start, stop, duration, easing_func=lambda t: t):
         t_scaled = 1 - (duration - t) / duration
         yield i
 
+
+class NoBacklightDeviceException(Exception):
+    pass
+
 class AcpiBacklightControl(object):
-    default_dir = '/sys/class/backlight/intel_backlight'
+    base_dir = '/sys/class/backlight'
 
 
-    def __init__(self, dir=None, time_sleep=0.01):
+    def __init__(self, device_dir=None, time_sleep=0.01):
         """__init__
 
         :param dir: The directory containing the acpi files
         :param time_sleep: The time to time.wait() to prevent busy waiting
         """
-        self.dir = dir or self.default_dir
+
+        # Build the path to the directory for the acpi device. This varies
+        # depending on the acpi device e.g. intel display drivers have
+        # intel_backlight and others have acpi_video0
+
+        if not device_dir:
+            possible_device_dirs = os.listdir(self.base_dir)
+
+            if len(possible_device_dirs) == 0:
+                raise NoBacklightDeviceException('Could not find any backlight '
+                      'devices in {}'.format(self.base_dir))
+
+            # just default to first possible
+            device_dir = possible_device_dirs[0]
+
+        self.dir = os.path.join(self.base_dir, device_dir)
         self.time_sleep = time_sleep
 
     def __enter__(self):
