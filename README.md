@@ -44,6 +44,9 @@ $ acpi-ease-backlight -d 0.5 dec 1000
 
 Library Usage
 ---------
+
+#### Instantiating
+
 Use the class `acpibacklight.AcpiBacklightControl` for changing the backlight
 level in various ways. `AcpiBacklightControl` is designed to use python *with*
 statements similarly to file objects and python's `open` builtin:
@@ -70,6 +73,14 @@ ctrl.open()
 ctrl.animate(ctrl.brightness - 1000)
 ctrl.close()
 ```
+If you have multiple ACPI backlight devices, specify the name when constructing
+the `AcpiBacklightControl`. Otherwise, the default is the first device directory
+found.
+```python
+ctrl = AcpiBacklightControl(device_dir='intel_backlight')
+```
+
+#### Easing Functions
 
 You can pass an easing function to be used in `animate()` by the `easing_func`
 keyword arg. This package uses [PyTweening](https://github.com/asweigart/pytweening)
